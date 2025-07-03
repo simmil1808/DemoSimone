@@ -7,7 +7,7 @@ import lombok.experimental.FieldNameConstants;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "comune")
+@Table(name = "utente")
 @Getter
 @Setter
 @NoArgsConstructor

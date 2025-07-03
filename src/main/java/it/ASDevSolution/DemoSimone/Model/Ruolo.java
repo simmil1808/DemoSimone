@@ -6,15 +6,8 @@ import lombok.experimental.FieldNameConstants;
 
 @Entity
 @Table(name = "ruolo")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@FieldNameConstants
-@EqualsAndHashCode
+@Data
 public class Ruolo {
-
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

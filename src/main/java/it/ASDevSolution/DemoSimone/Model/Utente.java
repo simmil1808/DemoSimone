@@ -1,22 +1,15 @@
 package it.ASDevSolution.DemoSimone.Model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 import lombok.experimental.FieldNameConstants;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name = "utente")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@FieldNameConstants
-@EqualsAndHashCode
-public class Utente implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@Data
+public class Utente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

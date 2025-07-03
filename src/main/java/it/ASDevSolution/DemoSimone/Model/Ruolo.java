@@ -5,7 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldNameConstants;
 
 @Entity
-@Table(name = "comune")
+@Table(name = "ruolo")
 @Getter
 @Setter
 @NoArgsConstructor

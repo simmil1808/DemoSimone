@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: DemoSimone
+
+  datasource:
+    url: postgresql://simo_milo:3MHVGrZgngoIIEBEgSyFhLBJf6rgv80S@dpg-d1jqodili9vc738lb30g-a/develop_ywtb
+    username: simo_milo
+    password: 3MHVGrZgngoIIEBEgSyFhLBJf6rgv80S
+    driver-class-name: org.postgresql.Driver
+
+
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+    default-property-inclusion: non_null
+    date-format: yyyy-MM-dd HH:mm:ss
+
+    deserialization:
+      fail-on-unknown-properties: true

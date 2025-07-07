@@ -6,7 +6,7 @@ spring:
     name: DemoSimone
 
   datasource:
-    url: jdbc:postgresql://dpg-d1jqodili9vc738lb30g-a.frankfurt-postgres.render.com:5432/develop_ywtb
+    url: jdbc:postgresql://dpg-d1jqodili9vc738lb30g-a.frankfurt-postgres.render.com/develop_ywtb
     username: simo_milo
     password: 3MHVGrZgngoIIEBEgSyFhLBJf6rgv80S
     driver-class-name: org.postgresql.Driver

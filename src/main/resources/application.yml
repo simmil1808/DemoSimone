@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+
+  application:
+    name: DemoSimone
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+    default-property-inclusion: non_null
+    date-format: yyyy-MM-dd HH:mm:ss
+
+    deserialization:
+      fail-on-unknown-properties: true

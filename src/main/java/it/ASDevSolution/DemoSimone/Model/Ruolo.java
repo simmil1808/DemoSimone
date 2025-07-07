@@ -5,16 +5,9 @@ import lombok.*;
 import lombok.experimental.FieldNameConstants;
 
 @Entity
-@Table(name = "comune")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@FieldNameConstants
-@EqualsAndHashCode
+@Table(name = "ruolo")
+@Data
 public class Ruolo {
-
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

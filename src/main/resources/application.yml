@@ -14,9 +14,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate     # o create, validate ecc., secondo le tue esigenze
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
 
   jackson:
     serialization:

@@ -5,7 +5,6 @@ spring:
   application:
     name: DemoSimone
 
-
   datasource:
     url: jdbc:postgresql://dpg-d1jqodili9vc738lb30g-a.frankfurt-postgres.render.com/develop_ywtb
     username: simo_milo

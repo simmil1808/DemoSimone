@@ -15,7 +15,9 @@ public interface UtenteModelConverter {
     })
     UtenteDto modelToDto(Utente model);
 
-    @InheritInverseConfiguration
+    @Mappings({
+            @Mapping(source = "ruoloDto", target = "ruolo")
+    })
     Utente dtoToModel(UtenteDto dto);
 
     void updateToModel(UtenteDto dto, @MappingTarget Utente model);

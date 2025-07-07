@@ -6,11 +6,17 @@ spring:
     name: DemoSimone
 
   datasource:
-    url: postgresql://simo_milo:3MHVGrZgngoIIEBEgSyFhLBJf6rgv80S@dpg-d1jqodili9vc738lb30g-a/develop_ywtb
+    url: jdbc:postgresql://dpg-d1jqodili9vc738lb30g-a.frankfurt-postgres.render.com:5432/develop_ywtb
     username: simo_milo
     password: 3MHVGrZgngoIIEBEgSyFhLBJf6rgv80S
     driver-class-name: org.postgresql.Driver
 
+  jpa:
+    hibernate:
+      ddl-auto: update     # o create, validate ecc., secondo le tue esigenze
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
   jackson:
     serialization:

@@ -1,14 +1,27 @@
-# 1. Usa OpenJDK 21 basato su Alpine (leggero)
-FROM eclipse-temurin:21-jdk-alpine
+# 1. Stage di build: usa Maven con JDK 21 per compilare il progetto
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
-# 2. Imposta la directory di lavoro dentro il container
 WORKDIR /app
 
-# 3. Copia il jar dal tuo progetto (PC) dentro la cartella /app del container, rinominandolo app.jar
-COPY target/DemoSimone-0.0.1-SNAPSHOT.jar app.jar
+# Copia solo pom.xml prima per sfruttare la cache di Maven
+COPY pom.xml .
 
-# 4. Esponi la porta 8080 del container (Spring Boot usa di default questa)
+# Copia il codice sorgente
+COPY src ./src
+
+# Build del jar senza test (per velocizzare)
+RUN mvn clean package -DskipTests
+
+# 2. Stage di runtime: immagine leggera con solo JDK 21
+FROM eclipse-temurin:21-jdk-alpine
+
+WORKDIR /app
+
+# Copia il jar generato dal builder
+COPY --from=builder /app/target/DemoSimone-0.0.1-SNAPSHOT.jar app.jar
+
+# Esponi la porta 8080
 EXPOSE 8080
 
-# 5. Comando per avviare il jar
+# Avvia l'app Spring Boot
 ENTRYPOINT ["java", "-jar", "app.jar"]

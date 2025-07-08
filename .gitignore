@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Escludi tutti i file .env (variabili d'ambiente con dati sensibili)
+.env*
+# Ma includi esplicitamente il file di esempio per la configurazione
+!.env.example

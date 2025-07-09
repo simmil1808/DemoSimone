@@ -7,9 +7,14 @@ import lombok.Data;
 public class UtenteDto {
 
     private Integer idUtente;
+
     @NotEmpty
     private String nome;
+
     @NotEmpty
     private String cognome;
+
     private RuoloDto ruoloDto;
+
+    private String email;
 }

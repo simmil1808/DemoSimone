@@ -20,6 +20,9 @@ public interface UtenteModelConverter {
     })
     Utente dtoToModel(UtenteDto dto);
 
+    @Mappings({
+            @Mapping(source = "ruoloDto", target = "ruolo")
+    })
     void updateToModel(UtenteDto dto, @MappingTarget Utente model);
 
 }

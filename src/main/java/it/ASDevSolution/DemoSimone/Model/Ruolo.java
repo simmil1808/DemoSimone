@@ -2,7 +2,6 @@ package it.ASDevSolution.DemoSimone.Model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.FieldNameConstants;
 
 @Entity
 @Table(name = "ruolo")
@@ -16,4 +15,5 @@ public class Ruolo {
 
     @Column(name = "nome_ruolo")
     private String nomeRuolo;
+
 }

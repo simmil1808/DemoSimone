@@ -9,7 +9,7 @@ on:
       - develop
 
 jobs:
-  deploy:  # 🔧 Nome del job (puoi dargli un nome a piacere)
+  deploy-develop:  # 🔧 Nome del job (puoi dargli un nome a piacere)
     # 🖥️ Specifica dove sarà eseguito questo job:
     # "ubuntu-latest" significa che GitHub userà l'ultima versione disponibile di Ubuntu Linux
     runs-on: ubuntu-latest

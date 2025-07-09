@@ -13,6 +13,8 @@ jobs:
     # 🖥️ Specifica dove sarà eseguito questo job:
     # "ubuntu-latest" significa che GitHub userà l'ultima versione disponibile di Ubuntu Linux
     runs-on: ubuntu-latest
+    # Autorizzazione tramite environment
+    environment: production  # <- questa riga fa il collegamento all'environment 'production'
 
     steps:  # 🪜 Elenco degli step da eseguire uno dopo l'altro
 

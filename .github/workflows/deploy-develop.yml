@@ -1,5 +1,5 @@
 # 👷 Nome della pipeline, visibile nella tab "Actions" su GitHub
-name: Deploy to Staging (develop)
+name: Deploy to Develop
 
 # 📦 Quando si attiva questa pipeline:
 # Ogni volta che fai push (git push) sul branch "develop"

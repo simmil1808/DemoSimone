@@ -1,0 +1,46 @@
+# 👷 Nome della pipeline, visibile nella tab "Actions" su GitHub
+name: Deploy to Staging (develop)
+
+# 📦 Quando si attiva questa pipeline:
+# Ogni volta che fai push (git push) sul branch "develop"
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:  # 🔧 Nome del job (puoi dargli un nome a piacere)
+    # 🖥️ Specifica dove sarà eseguito questo job:
+    # "ubuntu-latest" significa che GitHub userà l'ultima versione disponibile di Ubuntu Linux
+    runs-on: ubuntu-latest
+
+    steps:  # 🪜 Elenco degli step da eseguire uno dopo l'altro
+
+      # 1️⃣ Clona il codice del tuo repository all'interno della macchina Ubuntu temporanea
+      - name: Checkout code
+        uses: actions/checkout@v3  # "uses" indica che stiamo usando un'azione già pronta, in questo caso checkout@v3
+
+      # 2️⃣ Installa Java 21 nella macchina Ubuntu
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4  # Usa l'azione standard per impostare Java
+        with:
+          java-version: '21'         # Specifica la versione di Java (tu usi Java 21, quindi mettiamo 21)
+          distribution: 'temurin'    # Temurin è una distribuzione gratuita e compatibile di OpenJDK
+
+      # 3️⃣ Compila il progetto usando Maven (build = compilazione del codice)
+      - name: Build with Maven
+        run: mvn clean install --no-transfer-progress
+        # clean: pulisce le build precedenti
+        # install: compila il progetto e installa le dipendenze
+        # --no-transfer-progress: evita log troppo verbosi
+
+      # 4️⃣ Esegui i test automatici (JUnit, ecc.)
+      - name: Run tests
+        run: mvn test
+
+      # 5️⃣ Se tutto è andato bene, invia una richiesta HTTP (POST) al webhook di Render
+      # Questo comando attiva il deploy sull’ambiente di develop
+      - name: Deploy to Develop (Render)
+        run: |
+          echo "Deploying to develop..."  # stampa messaggio nel log
+          curl -X POST ${{ secrets.RENDER_HOOK_DEVELOP }}  # usa il secret per fare deploy su Render

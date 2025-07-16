@@ -2,9 +2,6 @@ package it.ASDevSolution.DemoSimone.Model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.experimental.FieldNameConstants;
-
-import java.io.Serializable;
 
 @Entity
 @Table(name = "utente")
@@ -25,4 +22,10 @@ public class Utente {
     @ManyToOne
     @JoinColumn(name = "id_ruolo")
     private Ruolo ruolo;
+
+    @Column(name = "email", unique = true)
+    private String email;
+
+    @Column(name = "password")
+    private String password;
 }

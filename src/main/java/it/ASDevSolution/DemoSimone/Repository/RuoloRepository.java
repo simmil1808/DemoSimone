@@ -4,4 +4,5 @@ import it.ASDevSolution.DemoSimone.Model.Ruolo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RuoloRepository extends JpaRepository<Ruolo, Integer> {
+    Ruolo findByNomeRuolo(String nomeRuolo);
 }

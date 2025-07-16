@@ -14,7 +14,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
-      open-in-view: false
+
+    open-in-view: false
 
   jackson:
     serialization:
@@ -24,3 +25,30 @@ spring:
 
     deserialization:
       fail-on-unknown-properties: true
+
+  jwt:
+    secret: ${JWT_SECRET}
+    access-token-validity: 1200000 # 20 minuti
+    refresh-token-validity: 28800000 # 8h
+
+  security:
+    oauth2:
+      client:
+
+        registration:
+          google: # Configurazione per il provider Google
+            client-id: ${GOOGLE_CLIENT_ID}  # ID client OAuth2, da Google Cloud Console (variabile d’ambiente)
+            client-secret: ${GOOGLE_CLIENT_SECRET}  # Segreto client OAuth2, da Google Cloud Console (variabile d’ambiente)
+            scope: # Ambiti di accesso richiesti all’utente
+              - email # Richiede accesso all’email dell’utente
+              - profile # Richiede accesso alle info di base profilo (nome, immagine, ecc)
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"  # URI di callback dove Google rimanda dopo login (Spring lo usa internamente)
+            authorization-grant-type: authorization_code  # Tipo di flusso OAuth2 (authorization code è quello standard per web app)
+            client-name: Google # Nome descrittivo (opzionale, usato ad es. nei log o UI)
+
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth # URL per iniziare il login con Google
+            token-uri: https://oauth2.googleapis.com/token  # URL per ottenere il token di accesso dopo autorizzazione
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo  # URL per ottenere le info dell’utente (email, nome, ecc)
+            user-name-attribute: sub

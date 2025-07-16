@@ -1,4 +1,4 @@
-package it.ASDevSolution.DemoSimone.Service;
+package it.ASDevSolution.DemoSimone.Security.OAuth2;
 
 import it.ASDevSolution.DemoSimone.Model.Ruolo;
 import it.ASDevSolution.DemoSimone.Model.Utente;
